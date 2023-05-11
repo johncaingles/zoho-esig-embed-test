@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        body {
+        .approval {
             font-family: sans-serif;
             justify-content: center;
             align-items: center;
@@ -17,10 +17,30 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>For Approval</h1>
-    <iframe 
-        style="width: 100%;height: 70vh;"
-        src="https://sign.zoho.com/zsguest?locale=en&sign_id=234b4d535f495623b39bf9f6aba42e967b06b8c1a72725a9737af5640bb41a0c3f378aab14df4487e233aea5e0f79640aab56cb0a552a3d16c2b3d9f54e9e454543f171cc053cecfd9e169dea4696bb35addc1239499eebf0b0accfa7a1ad2f4d8e63790c868527cb2644aba6ebf37d43bb3326d8997230a8b601da3061873c48ac80c955fea8e22&frameorigin=https://johncaingles.github.io/zoho-esig-embed-test/">
-    </iframe>
+    <div id="urlInput" style="
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        gap: 10px;
+    ">
+        <input type="text" id="url" name="url" >
+        <button id="btn">Set URL</button>
+    </div>
+    <div class="approval">
+        <h1>For Approval</h1>
+        <iframe
+            id="zoho-embed"
+            style="width: 100%;height: 70vh;">
+        </iframe>
+        <script defer>
+            let btn = document.getElementById("btn");
+            btn.addEventListener('click', event => {
+                let url = document.getElementById("url").value;
+                console.log({url})
+                document.getElementById("zoho-embed").setAttribute("src", url)
+                document.getElementById("urlInput").remove();
+            });
+        </script>
+    </div>
 </body>
 </html>
