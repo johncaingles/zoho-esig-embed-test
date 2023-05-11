@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
+        div.hidden {
+            display: none;
+        }
         .approval {
             font-family: sans-serif;
             justify-content: center;
@@ -26,21 +29,22 @@
         <input type="text" id="url" name="url" >
         <button id="btn">Set URL</button>
     </div>
-    <div class="approval">
+    <div id="approval" class="approval hidden">
         <h1>For Approval</h1>
         <iframe
             id="zoho-embed"
             style="width: 100%;height: 70vh;">
         </iframe>
-        <script defer>
-            let btn = document.getElementById("btn");
-            btn.addEventListener('click', event => {
-                let url = document.getElementById("url").value;
-                console.log({url})
-                document.getElementById("zoho-embed").setAttribute("src", url)
-                document.getElementById("urlInput").remove();
-            });
-        </script>
     </div>
+    <script defer>
+        let btn = document.getElementById("btn");
+        btn.addEventListener('click', event => {
+            let url = document.getElementById("url").value;
+            console.log({url})
+            document.getElementById("approval").classList.remove('hidden');
+            document.getElementById("zoho-embed").setAttribute("src", url)
+            document.getElementById("urlInput").remove();
+        });
+    </script>
 </body>
 </html>
